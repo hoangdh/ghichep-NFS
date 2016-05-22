@@ -11,6 +11,7 @@
 	- Không bảo mật, mã hóa dữ liệu
 	- Hiệu suất hoạt động trung bình ở mức khá, nhưng không ổn định
 	- Dữ liệu phân tán có thể bị phá vỡ nếu có nhiều phiên sử dụng đồng thời
+	
 ### 2. Thành phần
 
 #### Server
@@ -30,9 +31,20 @@
 - Sử dụng như tài nguyên cục bộ
 - Hoạt động theo kiểu stateless
 - Được thiết kế dành riêng cho hệ thống Linux
+- NFS được xây dựng từ 4 giao thức riêng biệt
+	- nfs: Đọc ghi, truy cập các file. Thống kê và xác thực
+	- mountd: Dùng để mount folder
+	- nsm: Giám sát trạng thái của mạng ở client và server
+	- nlm: Quản lý các Lock mạng, cho phép tương tác đồng thời
+
+<img src="http://i.imgur.com/SSFaDlc.png" />
 
 #### Virtual Filesystem (VFS)
 - là một filesystem ảo
+- Chức năng của nó giống như một FS là lưu trữ dữ liệu
+- Mỗi file sẽ có một "inode"
+- Nhiệm vụ của server là gửi inode của file mà client muốn truy cập
+- Server cho phép các client sử dụng inode của file
 
 ### 4. Tham khảo
 
